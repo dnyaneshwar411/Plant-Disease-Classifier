@@ -1,12 +1,21 @@
-import ContentBox, { Container } from "../Components/DisplayBoxes";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+import CommunityList from "../Components/Communities/CommunityList";
+import Chatbox from "../Components/Communities/Chatbox";
+
+import styles from "../Components/Communities/Chatbox.module.css"
 
 export default function Communities() {
-  return <Container classes="border">
-    <ContentBox classes="border-r w-[300px] rounded-0 aspect-video" style={{ backgroundColor: "#17151b" }}>
-      <h3>Communities Listing</h3>
-    </ContentBox>
-    <ContentBox classes="w-full aspect-video">
-      <h3>Chating</h3>
-    </ContentBox>
-  </Container>
+  const { id: selectedCommunityId } = useParams();
+  const [isListOpen, setIsListOpen] = useState(false);
+  function toggleList() {
+    setIsListOpen(prev => !prev)
+  }
+
+  return <div className="flex h-screen border-2 relative overflow-hidden">
+    <CommunityList isListOpen={isListOpen} />
+    <span onClick={toggleList} className={`absolute block z-10 top-1/2 left-2 lg:hidden bg-cyan-500 shadow-xl cursor-pointer shadow-cyan-500/50 w-10 aspect-square leading-9 text-center rounded-full text-2xl ${styles.chatToggleBtn}`}>{isListOpen ? <>&lt;</> : <>&gt;</>}</span>
+    {selectedCommunityId && <Chatbox />}
+  </div>
 }

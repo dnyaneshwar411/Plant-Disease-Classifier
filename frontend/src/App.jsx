@@ -10,6 +10,7 @@ import Breadcrumb from './Components/Breadcrumb';
 import Navbar from './Components/Navbar';
 import Detection from './Pages/Detection';
 import Blogs from './Pages/Blogs';
+import { useState } from 'react';
 
 export default function App() {
   return (
@@ -25,7 +26,7 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Register />} />
           <Route path="/communities" element={<Communities />} />
-          <Route path="/communities/:community" element={<Communities />} />
+          <Route path="/communities/:id" element={<Communities />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/shops" element={<Shops />} />
           <Route path="/shops/:shop" element={<Shops />} />

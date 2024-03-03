@@ -1,16 +1,20 @@
-import ContentBox, { Container } from "../Components/DisplayBoxes"
+import { WeatherProvider } from "../Contexts/WeatherContext";
+import Table from "../Components/Table";
+
+// const KEY = "da3d480ead445b26365691da0c5ecda3";
+
+const headings = ["Day", "Temprature", "Weather", "Wind", "Humidity", "Chance of Rain"]
 
 export default function Weather() {
-  return <Container classes="gap-10">
-    <ContentBox classes="w-1/2 aspect-video">
-      <h2>Weather Map of the region</h2>
-    </ContentBox>
-    <ContentBox classes="w-1/2 aspect-video">
-      <h2 className="mb-4">Question related to weather </h2>
-      <ul>
-        <li>is it good time to take any crop ?</li>
-        <li>When can it rain ?</li>
-      </ul>
-    </ContentBox>
-  </Container>
+  return <WeatherProvider>
+    <Table headings={headings} rows={[headings, ["india", "india", "india", "india", "india", "india"]]} />
+  </WeatherProvider>
 }
+
+/*
+ 1.soil data
+ 2.current weather
+ 3.weather forecasting
+ 4.imagery
+ 5.data about crops
+*/

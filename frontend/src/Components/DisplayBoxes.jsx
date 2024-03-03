@@ -5,7 +5,7 @@ export default function ContentBox({ classes, children, style }) {
 }
 
 export const Container = function ({ classes, children }) {
-  return <div className={`flex ${classes}`}>
+  return <div className={`flex flex-col md:flex-row ${classes}`}>
     {children}
   </div>
 }

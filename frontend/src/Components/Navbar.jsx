@@ -19,8 +19,8 @@ export default function Navbar() {
   ];
 
   return <nav className="padding-inline flex py-4 justify-between items-center border-b border-[#ffffff1a]">
-    <img src={icon} alt="icon" className="w-12 aspect-square object-cover rounded-full" />
-    <div className={`fixed sm:static left-0 right-0 pt-20 pb-10 sm:pt-0 sm:pb-0 bg-[#283618] sm:bg-transparent`} style={{ top: isToggled ? "0" : "-100%" }}>
+    <Link to="/"><img src={icon} alt="icon" className="w-12 aspect-square object-cover rounded-full" /></Link>
+    <div className={`fixed sm:static left-0 right-0 pt-20 pb-10 sm:pt-0 sm:pb-0 bg-[#283618] sm:bg-transparent z-10`} style={{ top: isToggled ? "0" : "-100%" }}>
       <Container classes={"gap-8 relative text-xl sm:text-sm flex-col h-full sm:flex-row justify-center items-center"}>
         {links.map(({ title, location }, index) => <Link className="" key={index} to={location}>{title}</Link>)}
         <Toggle />
