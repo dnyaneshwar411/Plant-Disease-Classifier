@@ -11,6 +11,8 @@ import Navbar from './Components/Navbar';
 import Detection from './Pages/Detection';
 import Blogs from './Pages/Blogs';
 import { useState } from 'react';
+import Editor from './Components/Blogs/Editor';
+import BlogDescription from './Components/Blogs/BlogDescription';
 
 export default function App() {
   return (
@@ -28,6 +30,8 @@ export default function App() {
           <Route path="/communities" element={<Communities />} />
           <Route path="/communities/:id" element={<Communities />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/create-blog" element={<Editor />} />
+          <Route path="/blogs/:id" element={<BlogDescription />} />
           <Route path="/shops" element={<Shops />} />
           <Route path="/shops/:shop" element={<Shops />} />
           <Route path="/*" element={"Page not found"} />

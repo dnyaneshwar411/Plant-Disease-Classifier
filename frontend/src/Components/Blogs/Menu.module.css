@@ -1,0 +1,20 @@
+.MarkupBtn {
+  background-color: var(--color-text);
+  color: var(--color-background-secondary);
+  padding: 0;
+  width: 40px;
+  aspect-ratio: 1/1;
+  margin: 6px;
+  cursor: pointer;
+}
+
+.MarkupBtn:hover {
+  color: white;
+  background-color: red;
+}
+
+.PublishBtn {
+  margin-left: auto;
+  color: white;
+  background-color: var(--color-primary);
+}

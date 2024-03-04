@@ -1,0 +1,27 @@
+/* h2 {
+  margin-block: 45px 20px !important;
+}
+
+h3 {
+  margin-block: 35px 15px !important;
+}
+
+img {
+  display: block;
+  margin-inline: auto;
+  aspect-ratio: 16/9;
+  max-width: 500px !important;
+}
+
+p {
+  margin-block: 10px !important;
+}
+
+*/
+/* Media Queries */
+/* 
+@media (max-width: 600px) {
+  img {
+    max-width: 100% !important;
+  }
+} */

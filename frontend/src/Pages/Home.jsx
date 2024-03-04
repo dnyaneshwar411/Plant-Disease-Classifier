@@ -1,17 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ContentBox, { Container } from "../Components/DisplayBoxes";
 import { useContext, useEffect, useState } from "react";
 import { CommunityContext } from "../Contexts/CommunityContext";
 import { Community } from "../Components/Communities/CommunityList";
+import { getBlogs } from "./Blogs";
+import BlogItem from "../Components/Blogs/BlogItem";
 
 export default function Home() {
   const [communities, setCommunities] = useState([]);
   const { communities: gotCommunities, getCommunities } = useContext(CommunityContext);
+  const [blogs, setBlogs] = useState([])
 
   useEffect(function () {
     getCommunities()
     setCommunities(gotCommunities.slice(0, 4));
   }, [setCommunities, gotCommunities]);
+
+  useEffect(function () {
+    async function func() {
+      const res = await getBlogs();
+      setBlogs(res.slice(0, 4));
+    }
+    func();
+    return () => func();
+  }, [setBlogs])
 
   return <div>
     {/* <h1>Welcome to Plantix, Choose for yourself that best fits your work</h1> */}
@@ -42,9 +54,13 @@ export default function Home() {
       </ContentBox>
 
       <ContentBox classes={'w-full sm:w-1/2 aspect-video'}>
-        <h3>Blogs</h3>
-        {/* created a component at the bottom of the page */}
-        <UL />
+        <h3 className="mb-10">Blogs</h3>
+        {blogs.map(blog => <NavLink key={blog.createdAt} to={`/blogs/${blog.slug}`}>
+          <div className="flex gap-2 items-center my-4">
+            <img src={blog.thumbnail} className="h-12 aspect-square border-2 border-slate-700" />
+            <div className="py-2 px-4 inline-block">{blog.title}</div>
+          </div>
+        </NavLink>)}
         <Link to="/blogs">See More</Link>
       </ContentBox>
       <ContentBox classes={'w-full sm:w-1/2 aspect-video'}>
