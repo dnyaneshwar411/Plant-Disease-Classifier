@@ -23,7 +23,7 @@ export default function CommunityList({ isListOpen }) {
 export function Community({ community }) {
   return <NavLink to={`/communities/${community.id}`}>
     <div className="flex items-center gap-4 mb-4">
-      <img src={community.profileImg} alt="community" className="w-12 aspect-square rounded-xl object-cover border-2 border-slate-700" />
+      <img src={community.profileImg} alt="community" className="w-12 mx-0 aspect-square rounded-xl object-cover border-2 border-slate-700" />
       <div>
         <h4>{community.name}</h4>
         <p className="text-sm">owner</p>

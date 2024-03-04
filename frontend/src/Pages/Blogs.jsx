@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { collection, query, getDocs, getFirestore } from "firebase/firestore";
-import { app } from "../Contexts/UserContext";
+import { UserContext, app } from "../Contexts/UserContext";
 import BlogItem from "../Components/Blogs/BlogItem";
+import { NavLink } from "react-router-dom";
 
 export async function getBlogs() {
   const db = getFirestore(app);
@@ -17,6 +18,8 @@ export async function getBlogs() {
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
 
+  const { user } = useContext(UserContext);
+
   useEffect(function () {
     async function func() {
       const res = await getBlogs();
@@ -24,7 +27,10 @@ export default function Blogs() {
     }
     func()
   }, [setBlogs]);
-  return <div className="gap-10 flex flex-wrap justify-stretch grow">
-    {blogs.map(blog => <BlogItem key={blog.createdAt} blog={blog} />)}
-  </div>
+  return <>
+    {user && <NavLink to="/blogs/create-blog"><button className="bg-red-600 mb-10">Publish Blog</button></NavLink>}
+    <div className="gap-10 flex flex-wrap justify-stretch grow">
+      {blogs.map(blog => <BlogItem key={blog.createdAt} blog={blog} />)}
+    </div>
+  </>
 }

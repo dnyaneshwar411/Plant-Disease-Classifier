@@ -57,7 +57,7 @@ export default function Home() {
         <h3 className="mb-10">Blogs</h3>
         {blogs.map(blog => <NavLink key={blog.createdAt} to={`/blogs/${blog.slug}`}>
           <div className="flex gap-2 items-center my-4">
-            <img src={blog.thumbnail} className="h-12 aspect-square border-2 border-slate-700" />
+            <img src={blog.thumbnail} className="h-12 mx-0 aspect-square border-2 border-slate-700" />
             <div className="py-2 px-4 inline-block">{blog.title}</div>
           </div>
         </NavLink>)}
